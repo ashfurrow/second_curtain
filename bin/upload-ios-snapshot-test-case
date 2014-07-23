@@ -19,7 +19,9 @@ if !path_prefix.end_with?('/')
 	path_prefix += '/'
 end
 
-manager = Upload_Manager.new(bucket_name, path_prefix)
+s3 = AWS::S3.new
+bucket = s3.buckets[bucket_name]
+manager = Upload_Manager.new(bucket, path_prefix)
 
 ARGF.each_line do |line|
 	if line.start_with?('ksdiff')
@@ -35,7 +37,10 @@ ARGF.each_line do |line|
 	print line
 end
 
-failures_address = manager.upload()
+now = DateTime.now()
+folder_name = @path_prefix + now.strftime('%Y-%m-%d--%H-%M')
+
+failures_address = manager.upload(folder_name)
 if failures_address
 	$stderr.puts "Failures: " + failures_address
 end
