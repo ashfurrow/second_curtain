@@ -2,15 +2,33 @@
 
 require 'upload-ios-snapshot-test-case'
 
-output = []
+bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
+
+if bucket_name == nil
+	abort "error: bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable"
+end
+
+aws_key = ENV['AWS_ACCESS_KEY_ID']
+aws_secret = ENV['AWS_SECRET_ACCESS_KEY']
+if aws_key == nil || aws_secret == nil
+	abort "error: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables"
+end
+
+path_prefix = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX'] || '/'
+if !path_prefix.end_with?('/')
+	path_prefix += '/'
+end
+
+uploads = []
 
 ARGF.each_line do |line|
 	if line.start_with?('ksdiff')
 		parts = line.split(/"/)
 		if (parts.count >= 4)
-			expectedPath = parts[1]
-			actualPath = parts[3]
-			output.push(Upload.upload(expectedPath, actualPath))
+			expected_path = parts[1]
+			actual_path = parts[3]
+			upload = Upload.new(expected_path, actual_path)
+			uploads.push(upload)
 		end
 	end
 
@@ -18,6 +36,6 @@ ARGF.each_line do |line|
 	print line
 end
 
-output.each do |output|
-	$stderr.puts output
+if uploads.count > 0
+	$stderr.puts "Failures: " + Upload.upload(bucket_name, path_prefix, uploads)
 end
