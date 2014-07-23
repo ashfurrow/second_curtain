@@ -28,7 +28,7 @@ Wouldn't it be awesome if we could upload the failing test snapshots somewhere, 
 Project Status
 ----------------
 
-Still very in the early stages – a proof of concept, really. I'll be polishing it up and publishing as a ruby gem shortly. 
+Rough first version complete. There are still a few things up in the air, but it should be settled down soon.
 
 Usage
 ----------------
