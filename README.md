@@ -1,6 +1,8 @@
 upload-ios-snapshot-test-case
 =============================
 
+[![Build Status](https://travis-ci.org/AshFurrow/upload-ios-snapshot-test-case.svg?branch=master)](https://travis-ci.org/AshFurrow/upload-ios-snapshot-test-case)
+
 If you're using the cool [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case) to test your iOS view logic, awesome! Even better if you have continuous integration, like on Travis, to automate running those tests!
 
 Purpose
