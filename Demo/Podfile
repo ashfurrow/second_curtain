@@ -1,0 +1,16 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, "6.0"
+
+target "Demo" do
+
+end
+
+target "DemoTests" do
+
+  pod 'FBSnapshotTestCase', '1.1'
+  pod 'Expecta+Snapshots', '1.2.0'
+  pod 'Specta', '0.2.1'
+  pod 'Expecta', '0.3.0'
+
+end
+
