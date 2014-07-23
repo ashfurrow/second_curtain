@@ -40,7 +40,7 @@ language: objective-c
 cache: bundler
 
 env:
-  - UPLOAD_IOS_SNAPSHOT_BUCKET_NAME=static.ashfurrow.com
+  - UPLOAD_IOS_SNAPSHOT_BUCKET_NAME=your.s3.bucket.com
   - UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX=an/optional/prefix
   - AWS_ACCESS_KEY_ID=ACCESS_KEY
   - AWS_SECRET_ACCESS_KEY=SECRET_KEY
