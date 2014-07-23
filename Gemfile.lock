@@ -1,3 +1,8 @@
+PATH
+  remote: ./
+  specs:
+    upload-ios-snapshot-test-case (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,4 +56,5 @@ PLATFORMS
 
 DEPENDENCIES
   cocoapods
+  upload-ios-snapshot-test-case!
   xcpretty
