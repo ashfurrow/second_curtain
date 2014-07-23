@@ -1,5 +1,5 @@
 class Upload
-  def self.hi
-    puts "Hello world!"
+  def self.upload(expectedPath, actualPath)
+    "There was a difference between images: #{expectedPath} and #{actualPath}."
   end
 end

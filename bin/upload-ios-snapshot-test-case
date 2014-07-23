@@ -2,6 +2,22 @@
 
 require 'upload-ios-snapshot-test-case'
 
+output = []
+
 ARGF.each_line do |line|
-  puts line
+	if line.start_with?('ksdiff')
+		parts = line.split(/"/)
+		if (parts.count >= 4)
+			expectedPath = parts[1]
+			actualPath = parts[3]
+			output.push(Upload.upload(expectedPath, actualPath))
+		end
+	end
+
+	print line
 end
+
+output.each do |output|
+	$stderr.puts output
+end
+
