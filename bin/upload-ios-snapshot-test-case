@@ -38,7 +38,7 @@ ARGF.each_line do |line|
 end
 
 now = DateTime.now()
-folder_name = @path_prefix + now.strftime('%Y-%m-%d--%H-%M')
+folder_name = now.strftime('%Y-%m-%d--%H-%M')
 
 failures_address = manager.upload(folder_name)
 if failures_address

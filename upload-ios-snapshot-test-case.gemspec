@@ -12,7 +12,11 @@ Gem::Specification.new do |s|
   s.authors     = ["Ash Furrow"]
   s.homepage	= 'https://github.com/AshFurrow/upload-ios-snapshot-test-case'
   s.email       = 'ash@ashfurrow.com'
-  s.files       = ["lib/upload-ios-snapshot-test-case.rb"]
+  s.files       = [
+    "lib/upload-ios-snapshot-test-case.rb",
+    "lib/upload_manager.rb",
+    "lib/upload.rb",
+  ]
   s.require_paths = ["lib"]
   s.executables << 'upload-ios-snapshot-test-case'
   s.add_runtime_dependency 'aws-sdk', '~> 1.48'
