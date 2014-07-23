@@ -39,6 +39,12 @@ Usage is pretty simple. I use a Makefile to build and run tests on my iOS projec
 language: objective-c
 cache: bundler
 
+env:
+  - UPLOAD_IOS_SNAPSHOT_BUCKET_NAME=static.ashfurrow.com
+  - UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX=an/optional/prefix
+  - AWS_ACCESS_KEY_ID=ACCESS_KEY
+  - AWS_SECRET_ACCESS_KEY=SECRET_KEY
+
 before_install:
   - bundle install
 
@@ -50,7 +56,9 @@ script:
   - make test
 ```
 
-And my Makefile looks like this:
+Take a look at how to [encrypt information in your config file](http://docs.travis-ci.com/user/encryption-keys/).
+
+My Makefile looks like this:
 
 ```
 WORKSPACE = Demo/Demo.xcworkspace
@@ -65,10 +73,6 @@ clean:
 	xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) clean
 
 test:
-	export UPLOAD_IOS_SNAPSHOT_BUCKET_NAME='some_bucket_name'
-	export UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX='some_prefix/maybe_a_folder' #optional
-	export AWS_ACCESS_KEY_ID='YOUR_AWS_KEY'
-	export AWS_SECRET_ACCESS_KEY='YOUR_AWS_SECRET'
 	set -o pipefail && xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) -configuration Debug test -sdk iphonesimulator | upload-ios-snapshot-test-case | xcpretty -c --test
 
 ci:	build
