@@ -21,7 +21,7 @@ end
 
 s3 = AWS::S3.new
 bucket = s3.buckets[bucket_name]
-manager = Upload_Manager.new(bucket, path_prefix)
+manager = UploadManager.new(bucket, path_prefix)
 
 ARGF.each_line do |line|
 	if line.start_with?('ksdiff')

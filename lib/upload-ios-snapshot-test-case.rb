@@ -1,2 +1,2 @@
-require 'Upload'
-require 'UploadManager'
+require 'upload'
+require 'upload_manager'
