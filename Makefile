@@ -4,7 +4,7 @@ SCHEME = Demo
 all: ci
 
 build:
-	set -o pipefail && xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) -sdk iphonesimulator build | xcpretty -c
+	set -o pipefail && xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) -sdk iphonesimulator build | upload-ios-snapshot-test-case | xcpretty -c
 
 clean:
 	xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) clean

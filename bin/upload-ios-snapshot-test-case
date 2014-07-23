@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'upload-ios-snapshot-test-case'
+
+ARGF.each_line do |line|
+  puts line
+end
