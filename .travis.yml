@@ -4,4 +4,4 @@ install:
   - bundle install
 
 script: 
-  - rake test
+  - rake

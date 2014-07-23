@@ -19,7 +19,7 @@ if !path_prefix.end_with?('/')
 	path_prefix += '/'
 end
 
-uploads = []
+manager = Upload_Manager.new(bucket_name, path_prefix)
 
 ARGF.each_line do |line|
 	if line.start_with?('ksdiff')
@@ -27,8 +27,7 @@ ARGF.each_line do |line|
 		if (parts.count >= 4)
 			expected_path = parts[1]
 			actual_path = parts[3]
-			upload = Upload.new(expected_path, actual_path)
-			uploads.push(upload)
+			manager.enqueue_upload(expected_path, actual_path)
 		end
 	end
 
@@ -36,6 +35,7 @@ ARGF.each_line do |line|
 	print line
 end
 
-if uploads.count > 0
-	$stderr.puts "Failures: " + Upload.upload(bucket_name, path_prefix, uploads)
+failures_address = manager.upload()
+if failures_address
+	$stderr.puts "Failures: " + failures_address
 end
