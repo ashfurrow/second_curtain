@@ -1,4 +1,4 @@
-WORKSPACE = Demo/Demo.xcworkspace
+WORKSPACE = Demo.xcworkspace
 SCHEME = Demo
 
 all: ci
