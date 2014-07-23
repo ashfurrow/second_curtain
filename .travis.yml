@@ -1,0 +1,9 @@
+language: objective-c
+cache: bundler
+
+before_script:
+  - export LANG=en_US.UTF-8
+  - make ci
+
+script:
+  - make test
