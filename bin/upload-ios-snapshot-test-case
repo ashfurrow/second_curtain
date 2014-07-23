@@ -14,10 +14,10 @@ ARGF.each_line do |line|
 		end
 	end
 
+	# Print the line normally, saving output for the end
 	print line
 end
 
 output.each do |output|
 	$stderr.puts output
 end
-

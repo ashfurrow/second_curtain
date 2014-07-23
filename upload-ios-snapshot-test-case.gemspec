@@ -15,4 +15,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/upload-ios-snapshot-test-case.rb"]
   s.require_paths = ["lib"]
   s.executables << 'upload-ios-snapshot-test-case'
+  s.add_runtime_dependency 'aws-sdk', '~> 1.48'
 end
