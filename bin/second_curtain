@@ -2,6 +2,13 @@
 
 require 'second_curtain'
 
+input = []
+
+ARGF.each_line do |line|
+  input.push(line)
+  print line
+end
+
 bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
 
 if bucket_name == nil
@@ -33,7 +40,7 @@ s3 = AWS::S3.new
 bucket = s3.buckets[bucket_name]
 manager = UploadManager.new(bucket, path_prefix)
 
-ARGF.each_line do |line|
+input.each do |line|
   if line.start_with?('ksdiff')
     parts = line.split(/"/)
     if (parts.count >= 4)
@@ -42,9 +49,6 @@ ARGF.each_line do |line|
       manager.enqueue_upload(expected_path, actual_path)
     end
   end
-
-  # Print the line normally, saving output for the end
-  print line
 end
 
 
