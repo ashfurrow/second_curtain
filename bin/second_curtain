@@ -12,13 +12,13 @@ end
 bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
 
 if bucket_name == nil
-  abort "error: bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable"
+  abort "error: Second Curtain bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable".red
 end
 
 aws_key = ENV['AWS_ACCESS_KEY_ID']
 aws_secret = ENV['AWS_SECRET_ACCESS_KEY']
 if aws_key == nil || aws_secret == nil
-  abort "error: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables"
+  abort "error: Second Curtain AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables".red
 end
 
 path_prefix = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX'] || '/'

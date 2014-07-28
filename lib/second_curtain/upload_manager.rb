@@ -3,8 +3,8 @@ require 'upload'
 
 class UploadManager
   def initialize (bucket, path_prefix)
-    abort "error: must supply an S3 bucket" unless bucket
-    abort "error: must supply a path prefix of at least '/'" unless path_prefix
+    abort "error: Second Curtain must supply an S3 bucket".red unless bucket
+    abort "error: Second Curtain must supply a path prefix of at least '/'".re unless path_prefix
 
     @uploads = []
     @path_prefix = path_prefix

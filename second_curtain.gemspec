@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.executables << 'second_curtain'
   s.add_runtime_dependency 'aws-sdk', '~> 1.48'
+  s.add_runtime_dependency 'colored', '~> 1.2'
 end
