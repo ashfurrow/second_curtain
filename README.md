@@ -78,6 +78,8 @@ test:
 ci:	build
 ```
 
+Notice that we're piping the output from `xcodebuild` into `second_curtain`. 
+
 (Note that we're using [xcpretty](http://github.com/supermarin/xcpretty), as you should, too). 
 
 And finally, our Gemfile:
