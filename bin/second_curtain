@@ -54,5 +54,5 @@ end
 
 failures_address = manager.upload(folder_name)
 if failures_address
-  $stderr.puts "Failures: " + failures_address
+  print "Failures: " + failures_address
 end
