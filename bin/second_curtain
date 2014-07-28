@@ -51,8 +51,6 @@ input.each do |line|
   end
 end
 
-  $stderr.puts ("Failures: something")
-
 failures_address = manager.upload(folder_name)
 if failures_address
   $stderr.puts ("Failures: " + failures_address)
