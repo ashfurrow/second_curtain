@@ -1,4 +1,4 @@
-upload-ios-snapshot-test-case
+Second Shutter
 =============================
 
 [![Build Status](https://travis-ci.org/AshFurrow/second_curtain.svg?branch=master)](https://travis-ci.org/AshFurrow/second_curtain)
