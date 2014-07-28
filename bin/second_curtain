@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'upload-ios-snapshot-test-case'
+require 'second_curtain'
 
 bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
 

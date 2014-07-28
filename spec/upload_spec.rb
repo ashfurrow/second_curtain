@@ -1,4 +1,4 @@
-require './lib/upload'
+require './lib/second_curtain/upload'
 require 'uri'
 
 describe Upload do

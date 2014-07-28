@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'upload-ios-snapshot-test-case', :path => './'
+gem 'second_curtain', :path => './'
 gem 'rspec'
 gem 'rspec-mocks'

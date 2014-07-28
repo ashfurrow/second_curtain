@@ -1,5 +1,5 @@
-require './lib/upload_manager'
-require './lib/upload'
+require './lib/second_curtain/upload_manager'
+require './lib/second_curtain/upload'
 
 describe UploadManager do
 	it "should have instance variables set correctly upon initialization" do

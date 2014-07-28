@@ -73,7 +73,7 @@ clean:
 	xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) clean
 
 test:
-	set -o pipefail && xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) -configuration Debug test -sdk iphonesimulator | upload-ios-snapshot-test-case | xcpretty -c --test
+	set -o pipefail && xcodebuild -workspace $(WORKSPACE) -scheme $(SCHEME) -configuration Debug test -sdk iphonesimulator | second_curtain | xcpretty -c --test
 
 ci:	build
 ```
@@ -87,7 +87,7 @@ source 'https://rubygems.org'
 
 gem 'cocoapods'
 gem 'xcpretty'
-gem 'upload-ios-snapshot-test-case', :path => './' #Note: will change once we publish as a proper gem
+gem 'second_curtain', '~> 0.1.0'
 ```
 
 And when any snapshot tests fail, they'll be uploaded to S3 and an HTML page will be generated with links to the images so you can download them. Huzzah!
