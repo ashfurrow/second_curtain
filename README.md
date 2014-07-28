@@ -80,7 +80,7 @@ ci:	build
 
 Notice that we're piping the output from `xcodebuild` into `second_curtain`. 
 
-(Note that we're using [xcpretty](http://github.com/supermarin/xcpretty), as you should, too). 
+Note also that we're using [`xcpretty`](http://github.com/supermarin/xcpretty), as you should, too. The xcpretty invocation must come *after* the `second_curtain` invocation, since Second Curtain relies on parsing the output from `xcodebuild` directly. 
 
 And finally, our Gemfile:
 

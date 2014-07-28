@@ -12,13 +12,13 @@ end
 bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
 
 if bucket_name == nil
-  abort "error: Second Curtain bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable".red
+  abort "error: Second Curtain bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable"
 end
 
 aws_key = ENV['AWS_ACCESS_KEY_ID']
 aws_secret = ENV['AWS_SECRET_ACCESS_KEY']
 if aws_key == nil || aws_secret == nil
-  abort "error: Second Curtain AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables".red
+  abort "error: Second Curtain AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables"
 end
 
 path_prefix = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX'] || '/'
@@ -51,8 +51,9 @@ input.each do |line|
   end
 end
 
+  $stderr.puts ("Failures: something")
 
 failures_address = manager.upload(folder_name)
 if failures_address
-  print "Failures: " + failures_address
+  $stderr.puts ("Failures: " + failures_address)
 end
