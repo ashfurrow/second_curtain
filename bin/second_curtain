@@ -19,6 +19,16 @@ if !path_prefix.end_with?('/')
 	path_prefix += '/'
 end
 
+folder_name = ENV['UPLOAD_IOS_SNAPSHOT_FOLDER_NAME']
+if !folder_name
+	folder_name = ENV['TRAVIS_JOB_ID']
+end
+
+if !folder_name
+	now = DateTime.now()
+	folder_name = now.strftime('%Y-%m-%d--%H-%M')
+end
+
 s3 = AWS::S3.new
 bucket = s3.buckets[bucket_name]
 manager = UploadManager.new(bucket, path_prefix)
@@ -37,8 +47,6 @@ ARGF.each_line do |line|
 	print line
 end
 
-now = DateTime.now()
-folder_name = now.strftime('%Y-%m-%d--%H-%M')
 
 failures_address = manager.upload(folder_name)
 if failures_address
