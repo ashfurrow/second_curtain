@@ -1,5 +1,5 @@
 require 'aws-sdk'
-require 'upload'
+require 'second_curtain/upload'
 
 class UploadManager
   def initialize (bucket, path_prefix)
