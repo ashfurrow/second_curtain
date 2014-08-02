@@ -39,7 +39,7 @@ describe UploadManager do
   it "properly uploads" do
     double = double()
     expect(double).to receive(:write)
-    expect(double).to receive(:url_for).and_return("http://example.com")
+    expect(double).to receive(:public_url).and_return("http://example.com")
 
     bucket = double()
     expect(bucket).to receive(:objects).and_return({

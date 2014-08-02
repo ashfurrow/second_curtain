@@ -24,7 +24,7 @@ class UploadManager
 
     index_object = @bucket.objects[@path_prefix + folder_name + "/index.html"]
     index_object.write(to_html)
-    index_object.url_for(:read).to_s
+    index_object.public_url.to_s
   end
 
   def to_html

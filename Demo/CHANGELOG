@@ -1,0 +1,3 @@
+## 0.1.5
+
+- Transitioned to using public URLs for S3 objects. [@ashfurrow](http://github.com/AshFurrow)

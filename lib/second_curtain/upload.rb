@@ -21,12 +21,12 @@ class Upload
     expected_filename = Pathname.new(@expected_path).basename.to_s
     expected_object = bucket.objects[path + "/" + expected_filename]
     expected_object.write(:file => @expected_path)
-    @uploaded_expected_url = expected_object.url_for(:read)
+    @uploaded_expected_url = expected_object.public_url
 
     actual_filename = Pathname.new(@actual_path).basename.to_s
     actual_object = bucket.objects[path + "/" + actual_filename]
     actual_object.write(:file => @actual_path)
-    @uploaded_actual_url = actual_object.url_for(:read)
+    @uploaded_actual_url = actual_object.public_url
   end
 
   def to_html
