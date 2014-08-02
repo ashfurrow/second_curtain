@@ -1,0 +1,79 @@
+Build settings from command line:
+    SDKROOT = iphonesimulator7.1
+
+=== BUILD TARGET Pods-DemoTests-Specta OF PROJECT Pods WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-DemoTests-Expecta OF PROJECT Pods WITH CONFIGURATION Debug ===
+Check dependencies
+
+=== BUILD TARGET Demo OF PROJECT Demo WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-DemoTests-FBSnapshotTestCase OF PROJECT Pods WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-DemoTests-Expecta+Snapshots OF PROJECT Pods WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+=== BUILD TARGET Pods-DemoTests OF PROJECT Pods WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+=== BUILD TARGET DemoTests OF PROJECT Demo WITH CONFIGURATION Debug ===
+
+Check dependencies
+
+PhaseScriptExecution Check\ Pods\ Manifest.lock /Users/ash/Library/Developer/Xcode/DerivedData/Demo-bqdkrcbicwkofebylhdfmdrzkaob/Build/Intermediates/Demo.build/Debug-iphonesimulator/DemoTests.build/Script-7906C3A75BB2404EBA623D41.sh
+    cd "/Users/ash/Dropbox (Personal)/bin/second_shutter/Demo"
+    /bin/sh -c /Users/ash/Library/Developer/Xcode/DerivedData/Demo-bqdkrcbicwkofebylhdfmdrzkaob/Build/Intermediates/Demo.build/Debug-iphonesimulator/DemoTests.build/Script-7906C3A75BB2404EBA623D41.sh
+
+PhaseScriptExecution Copy\ Pods\ Resources /Users/ash/Library/Developer/Xcode/DerivedData/Demo-bqdkrcbicwkofebylhdfmdrzkaob/Build/Intermediates/Demo.build/Debug-iphonesimulator/DemoTests.build/Script-6120F487C62647F9B0EF7F31.sh
+    cd "/Users/ash/Dropbox (Personal)/bin/second_shutter/Demo"
+    /bin/sh -c /Users/ash/Library/Developer/Xcode/DerivedData/Demo-bqdkrcbicwkofebylhdfmdrzkaob/Build/Intermediates/Demo.build/Debug-iphonesimulator/DemoTests.build/Script-6120F487C62647F9B0EF7F31.sh
+building file list ... done
+
+sent 29 bytes  received 20 bytes  98.00 bytes/sec
+total size is 0  speedup is 0.00
+/* com.apple.actool.compilation-results */
+/Users/ash/Library/Developer/Xcode/DerivedData/Demo-bqdkrcbicwkofebylhdfmdrzkaob/Build/Products/Debug-iphonesimulator/DemoTests.xctest/Assets.car
+
+
+= All tests
+  Test Suite 'All tests' started at 2014-07-31 09:17:12 +0000
+  = DemoTests.xctest
+    Test Suite 'DemoTests.xctest' started at 2014-07-31 09:17:12 +0000
+
+    = ASHViewControllerSpec
+      Test Suite 'ASHViewControllerSpec' started at 2014-07-31 09:17:12 +0000
+
+      -[ASHViewControllerSpec a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot]
+        Test Case '-[ASHViewControllerSpec a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot]' started.
+2014-07-31 11:17:12.922 Demo[16594:60b] If you have Kaleidoscope installed you can run this command to see an image diff:
+ksdiff "/Users/ash/Library/Application Support/iPhone Simulator/7.1/Applications/8C5F6EC1-9B2A-4418-A978-9733D338C27E/tmp/ASHViewControllerSpec/reference_a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot@2x.png" "/Users/ash/Library/Application Support/iPhone Simulator/7.1/Applications/8C5F6EC1-9B2A-4418-A978-9733D338C27E/tmp/ASHViewControllerSpec/failed_a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot@2x.png"
+2014-07-31 11:17:12.923 Demo[16594:60b] /Users/ash/Dropbox (Personal)/bin/second_shutter/Demo/DemoTests/DemoTests.m:31 expected a matching snapshot in a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot
+ NSLocalizedDescription: Images different
+/Users/ash/Dropbox (Personal)/bin/second_shutter/Demo/DemoTests/DemoTests.m:31: error: -[ASHViewControllerSpec a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot] : expected a matching snapshot in a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot
+ NSLocalizedDescription: Images different
+        Test Case '-[ASHViewControllerSpec a_view_controller_with_a_loaded_view_should_have_a_valid_snapshot]' failed (0.419 seconds).
+      
+      Test Suite 'ASHViewControllerSpec' finished at 2014-07-31 09:17:12 +0000.
+      Executed 1 test, with 1 failure (1 unexpected) in 0.419 (0.419) seconds
+    
+    = FBSnapshotTestCase
+      Test Suite 'FBSnapshotTestCase' started at 2014-07-31 09:17:12 +0000
+
+      Test Suite 'FBSnapshotTestCase' finished at 2014-07-31 09:17:12 +0000.
+      Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+    
+    Test Suite 'DemoTests.xctest' finished at 2014-07-31 09:17:12 +0000.
+    Executed 1 test, with 1 failure (1 unexpected) in 0.419 (0.420) seconds
+  
+  Test Suite 'All tests' finished at 2014-07-31 09:17:12 +0000.
+  Executed 1 test, with 1 failure (1 unexpected) in 0.419 (0.421) seconds
+
+1 test; 0 skipped; 1 failure; 1 exception; 0 pending

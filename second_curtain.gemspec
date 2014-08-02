@@ -16,6 +16,10 @@ Gem::Specification.new do |s|
     "lib/second_curtain.rb",
     "lib/second_curtain/upload_manager.rb",
     "lib/second_curtain/upload.rb",
+    "lib/second_curtain/parser.rb",
+    "lib/second_curtain/xcode_test_case.rb",
+    "lib/second_curtain/test_suite.rb",
+    "lib/second_curtain/kaleidoscope_command.rb"
   ]
   s.require_paths = ["lib"]
   s.executables << 'second_curtain'
