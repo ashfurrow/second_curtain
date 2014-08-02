@@ -1,11 +1,11 @@
-class TestCase
+class XcodeTestCase
   attr_accessor :commands
+  attr_accessor :name
 
   def self.test_case_from_line(line)
     components = line.split("Test Case '-[")
-    end_components = line.split("]' started.")
 
-    if components.count == 2 && end_components.count == 2
+    if components.count == 2 && line.include?("]' started.")
       # Let's make it readable
       name = components.last.split("'").first
       name = name.split(" ").last
@@ -23,14 +23,16 @@ class TestCase
       name.gsub!(" shouldn t", " shouldn't")
       name.gsub!(" can t", " can't")
 
-      first_char_upper = name[1].upcase
-      name[0..1] = first_char_upper
-      TestCase.new(name)
+      first_char_upper = name[0].upcase
+      name[0] = first_char_upper
+      name.strip!
+      XcodeTestCase.new(name)
     end
   end
 
   def initialize (name)
     @commands = []
+    @name = name
   end
 
   def add_command(command)

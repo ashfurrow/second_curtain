@@ -17,7 +17,7 @@ class Parser
 
     if line.include?("Test Case") && latest_test_suite
       if line.include?("started.")
-        test_case = TestCase.test_case_from_line(line)
+        test_case = XcodeTestCase.test_case_from_line(line)
         latest_test_suite.test_cases.push test_case unless test_case == nil
       elsif line.include?("' failed (")
         latest_test_suite.latest_test_case.latest_command.fails = true

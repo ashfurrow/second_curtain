@@ -1,5 +1,6 @@
 class TestSuite
   attr_accessor :test_cases
+  attr_accessor :name
 
   def self.suite_from_line(line)
     components = line.split("Test Suite '")
