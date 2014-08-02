@@ -1,3 +1,7 @@
+## Next
+
+- Using more intelligent parser to avoid uploading false matches. [@ashfurrow](http://github.com/AshFurrow)
+
 ## 0.1.5
 
 - Transitioned to using public URLs for S3 objects. [@ashfurrow](http://github.com/AshFurrow)

@@ -1,4 +1,6 @@
 class TestCase
+  attr_accessor :commands
+
   def self.test_case_from_line(line)
     components = line.split("Test Case '-[")
     end_components = line.split("]' started.")
@@ -29,11 +31,14 @@ class TestCase
 
   def initialize (name)
     @commands = []
-    @snapshots = []
   end
 
   def add_command(command)
     @commands.push(command)
+  end
+
+  def latest_command
+    @commands.last
   end
 end
 

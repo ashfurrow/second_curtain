@@ -7,21 +7,21 @@ require 'second_curtain/kaleidoscope_command'
 class Parser
   def initialize
     @test_suites = []
-    @logs = []
-    @diff_commands = []
   end
 
   def parse_line(line)
-    @logs.push(line)
-
     if line.include?("Test Suite")
       test_suite = TestSuite.suite_from_line(line)
       @test_suites.push test_suite unless test_suite == nil
     end
 
     if line.include?("Test Case") && latest_test_suite
-      test_case = TestCase.test_case_from_line(line)
-      latest_test_suite.test_cases.push test_case unless test_case == nil
+      if line.include?("started.")
+        test_case = TestCase.test_case_from_line(line)
+        latest_test_suite.test_cases.push test_case unless test_case == nil
+      elsif line.include?("' failed (")
+        latest_test_suite.latest_test_case.latest_command.fails = true
+      end
     end
 
     if line.include?("ksdiff") && latest_test_suite
@@ -29,7 +29,6 @@ class Parser
       command = KaleidoscopeCommand.command_from_line(command_string)
       if command != nil
         latest_test_suite.latest_test_case.add_command command
-        @diff_commands.push(command)
       end
     end
   end
@@ -42,11 +41,11 @@ class Parser
     return line.split("diff:\n").last
   end
 
-  def has_snapshot_errors
-    return unique_diff_commands
+  def failing_commands
+    @test_suites.map { |e| e.test_cases }.flatten.map { |e| e.commands }.flatten.select { |e| e.fails }
   end
 
-  def unique_diff_commands
-
+  def has_failing_commands
+    failing_commands.count > 0
   end
 end
