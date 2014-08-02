@@ -108,7 +108,7 @@ script:
   - make test
 ```
 
-(You can take a look at how to [encrypt information in your config file](http://docs.travis-ci.com/user/encryption-keys/), but this has limitations due to how ecrypted variables are accessed via PRs on forks>0
+(You can take a look at how to [encrypt information in your config file](http://docs.travis-ci.com/user/encryption-keys/), but this has limitations due to how ecrypted variables are accessed via PRs on forks.)
 
 My Makefile looks like this:
 
