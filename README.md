@@ -33,14 +33,66 @@ First version complete. There are still a few things up in the air, but it shoul
 Usage
 ----------------
 
-Usage is pretty simple. I use a Makefile to build and run tests on my iOS project, so my `.travis.yml` file looks something like this:
+Usage is pretty simple. Have an S3 bucket that is world-readable (that is, include the following bucket policy).
+
+```
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::bucket-name/*"
+    }
+  ]
+}
+```
+
+(Replace "bucket-name" with your bucket name.)
+
+It's also a good idea not to use a general-purpose S3 user for your CI, so create a new one with the following policy that will let them list buckets, but only read from or write to the bucket you're using.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:ListAllMyBuckets"],
+      "Resource": "arn:aws:s3:::*"
+    }, 
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": "arn:aws:s3:::bucket-name"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": "arn:aws:s3:::bucket-name/*"
+    }
+  ]
+}
+```
+
+OK, so the hard part is mostly done. Now that we have a place to upload our images, let's configure our build.
+
+I use a Makefile to build and run tests on my iOS project, so my `.travis.yml` file looks something like this:
 
 ```
 language: objective-c
 cache: bundler
 
 env:
-  - UPLOAD_IOS_SNAPSHOT_BUCKET_NAME=your.s3.bucket.com
+  - UPLOAD_IOS_SNAPSHOT_BUCKET_NAME=bucket-name
   - UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX=an/optional/prefix
   - AWS_ACCESS_KEY_ID=ACCESS_KEY
   - AWS_SECRET_ACCESS_KEY=SECRET_KEY
@@ -56,7 +108,7 @@ script:
   - make test
 ```
 
-Take a look at how to [encrypt information in your config file](http://docs.travis-ci.com/user/encryption-keys/).
+(You can take a look at how to [encrypt information in your config file](http://docs.travis-ci.com/user/encryption-keys/), but this has limitations due to how ecrypted variables are accessed via PRs on forks>0
 
 My Makefile looks like this:
 
@@ -89,7 +141,7 @@ source 'https://rubygems.org'
 
 gem 'cocoapods'
 gem 'xcpretty'
-gem 'second_curtain', '~> 0.1.0'
+gem 'second_curtain', '~> 0.1.4'
 ```
 
 And when any snapshot tests fail, they'll be uploaded to S3 and an HTML page will be generated with links to the images so you can download them. Huzzah!
