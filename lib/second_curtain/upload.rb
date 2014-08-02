@@ -28,8 +28,4 @@ class Upload
     actual_object.write(:file => @actual_path)
     @uploaded_actual_url = actual_object.public_url
   end
-
-  def to_html
-    "<li><a href='#{ @uploaded_expected_url.to_s }'>Expected</a>, <a href='#{ @uploaded_actual_url.to_s }'>Actual</li>"
-  end
 end

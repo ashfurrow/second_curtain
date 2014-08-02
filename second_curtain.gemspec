@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version     = '0.1.5'
   s.licenses    = ['MIT']
   s.summary     = "Upload failing iOS snapshot tests cases to S3."
-  s.description	= 
+  s.description	=
   %q{
   If you're using the cool FBSnapshotTestCase to test your iOS view logic, awesome! Even better if you have continuous integration, like on Travis, to automate running those tests!
 
@@ -24,4 +24,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.executables << 'second_curtain'
   s.add_runtime_dependency 'aws-sdk', '~> 1.48'
+  s.add_runtime_dependency 'mustache', '~> 0.99'
 end

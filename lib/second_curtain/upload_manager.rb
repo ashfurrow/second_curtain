@@ -1,5 +1,6 @@
 require 'aws-sdk'
 require 'second_curtain/upload'
+require 'second_curtain/web_preview'
 
 class UploadManager
   def initialize (bucket, path_prefix)
@@ -22,12 +23,9 @@ class UploadManager
       upload.upload(@bucket, @path_prefix)
     end
 
+    preview = WebPreview.new(@uploads)
     index_object = @bucket.objects[@path_prefix + folder_name + "/index.html"]
-    index_object.write(to_html)
+    index_object.write(preview.generate_html)
     index_object.public_url.to_s
-  end
-
-  def to_html
-    "<html><body>#{@uploads.map(&:to_html).join}</body></html>"
   end
 end
