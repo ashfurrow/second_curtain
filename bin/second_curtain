@@ -2,56 +2,51 @@
 
 require 'second_curtain'
 
-input = []
+parser = Parser.new()
 
 ARGF.each_line do |line|
-  input.push(line)
+  parser.parse_line(line)
   print line
 end
 
-bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
+if parser.has_failing_commands
+  bucket_name = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_NAME']
 
-if bucket_name == nil
-  abort "error: Second Curtain bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable"
-end
-
-aws_key = ENV['AWS_ACCESS_KEY_ID']
-aws_secret = ENV['AWS_SECRET_ACCESS_KEY']
-if aws_key == nil || aws_secret == nil
-  abort "error: Second Curtain AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables"
-end
-
-path_prefix = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX'] || '/'
-if !path_prefix.end_with?('/')
-  path_prefix += '/'
-end
-
-folder_name = ENV['UPLOAD_IOS_SNAPSHOT_FOLDER_NAME']
-if !folder_name
-  folder_name = ENV['TRAVIS_JOB_ID']
-end
-
-if !folder_name
-  now = DateTime.now()
-  folder_name = now.strftime('%Y-%m-%d--%H-%M')
-end
-
-s3 = AWS::S3.new
-bucket = s3.buckets[bucket_name]
-manager = UploadManager.new(bucket, path_prefix)
-
-input.each do |line|
-  if line.start_with?('ksdiff')
-    parts = line.split(/"/)
-    if (parts.count >= 4)
-      expected_path = parts[1]
-      actual_path = parts[3]
-      manager.enqueue_upload(expected_path, actual_path)
-    end
+  if bucket_name == nil
+    abort "error: Second Curtain bucket name must be specified in environment UPLOAD_IOS_SNAPSHOT_BUCKET_NAME variable"
   end
-end
 
-failures_address = manager.upload(folder_name)
-if failures_address
-  $stderr.puts ("Failures: " + failures_address)
+  aws_key = ENV['AWS_ACCESS_KEY_ID']
+  aws_secret = ENV['AWS_SECRET_ACCESS_KEY']
+  if aws_key == nil || aws_secret == nil
+    abort "error: Second Curtain AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be defined as environment variables"
+  end
+
+  path_prefix = ENV['UPLOAD_IOS_SNAPSHOT_BUCKET_PREFIX'] || '/'
+  if !path_prefix.end_with?('/')
+    path_prefix += '/'
+  end
+
+  folder_name = ENV['UPLOAD_IOS_SNAPSHOT_FOLDER_NAME']
+  if !folder_name
+    folder_name = ENV['TRAVIS_JOB_ID']
+  end
+
+  if !folder_name
+    now = DateTime.now()
+    folder_name = now.strftime('%Y-%m-%d--%H-%M')
+  end
+
+  s3 = AWS::S3.new
+  bucket = s3.buckets[bucket_name]
+  manager = UploadManager.new(bucket, path_prefix)
+
+  parser.failing_commands.each do |command|
+    manager.enqueue_upload(command.before_path, command.after_path)
+  end
+  
+  failures_address = manager.upload(folder_name)
+  if failures_address
+    $stderr.puts ("Failures: " + failures_address)
+  end
 end
