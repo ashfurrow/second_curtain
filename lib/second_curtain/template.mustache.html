@@ -56,7 +56,11 @@
       background-color:green;
       pointer-events:none;
     }
-
+    
+    article.content {
+      margin:36px auto;
+    }
+    
     section img {
       background-repeat: repeat-x repeat-y;
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAeUlEQVRYCe3TIQ7AIBBE0QXRut7/mlSVGorE/22C+KtAzIa8DKW3Z0TiHNeZuC2ipm77YZkPpKgKKkgFaN4OKkgFaN4OKkgFaN4OKkgFaL6MOXTJmn/vvl7x2U9CCRVUkArQvB1UkArQvB1UkArQvB1UkArQ/PYd/AC9pgss8BZEQAAAAABJRU5ErkJggg==);
@@ -96,13 +100,13 @@
       <div class="content">
         <h1>Second Curtain</h1>
         <ul>
-          <li><a href="file:///Users/orta/dev/ruby/second_curtain/lib/second_curtain/template.mustache.html">artsy/eigen#1112</a></li>
-          <li><a href="file:///Users/orta/dev/ruby/second_curtain/lib/second_curtain/template.mustache.html">travis#5240812</a></li>
+          <!-- <li><a href="file:///Users/orta/dev/ruby/second_curtain/lib/second_curtain/template.mustache.html">artsy/eigen#1112</a></li>
+          <li><a href="file:///Users/orta/dev/ruby/second_curtain/lib/second_curtain/template.mustache.html">travis#5240812</a></li> -->
         </ul>
     </div>
   </nav>
 
-  <article class="content">
+  <!-- <article class="content">
     <h1>ARAmbiguousSplitStackViewSpec</h1>
     <h3>Single Stack With Two Views</h3>
     <section >
@@ -112,34 +116,20 @@
         <p>320 x 280</p>
       </div>
     </section>
-  </article>
+  </article> -->
 
+  {{#uploads}}
   <article class="content">
-    <h1>ARAmbiguousSplitStackViewSpec</h1>
-    <h3>Single Stack With Two Views</h3>
-    <section >
+    <section>
       <div class="onion">
-        <img class="before" src="https://github.com/artsy/energy/raw/2c1b4d2eb35bba900c697a11e7e65f22024e7d0a/ArtsyFolio%20Tests/ReferenceImages/ARAmbiguousSplitStackViewSpec/single_stack_with_two_views%402x.png?raw=true">
-        <img class="after" src="https://github.com/orta/energy/raw/5978c5bfa0dfdd0317f2b68e855efad7d7dc7df2/ArtsyFolio%20Tests/ReferenceImages/ARAmbiguousSplitStackViewSpec/single_stack_with_two_views%402x.png?raw=true">
-        <p>320 x 280</p>
+        <img class="before" src="{{ uploaded_expected_url }}">
+        <img class="after" src="{{ uploaded_actual_url }}">
       </div>
     </section>
   </article>
-
-
-<article class="content">
-  <h1>ARAmbiguousSplitStackViewSpec</h1>
-  <h3>Single Stack With Two Views</h3>
-  <section >
-    <div class="onion">
-      <img class="before" src="https://github.com/artsy/energy/raw/2c1b4d2eb35bba900c697a11e7e65f22024e7d0a/ArtsyFolio%20Tests/ReferenceImages/ARAmbiguousSplitStackViewSpec/single_stack_with_two_views%402x.png?raw=true">
-      <img class="after" src="https://github.com/orta/energy/raw/5978c5bfa0dfdd0317f2b68e855efad7d7dc7df2/ArtsyFolio%20Tests/ReferenceImages/ARAmbiguousSplitStackViewSpec/single_stack_with_two_views%402x.png?raw=true">
-      <p>320 x 280</p>
-    </div>
-  </section>
-</article>
-
-
+  {{/uploads}}
+  
+  
   <script>
 
     /*!
@@ -161,8 +151,8 @@
 
       imagesLoaded( element, function( instance ) {
 
-        var left = ((1200 - $before.naturalWidth) / 2) + "px"
-        var top = ((660 - $before.naturalHeight) / 2) + "px"
+        var left = ((1200 - $($before).width()) / 2) + "px"
+        var top = ((660 - $($before).height()) / 2) + "px"
 
         $($before).css("top", top)
         $($before).css("left", left)
@@ -174,8 +164,8 @@
       // allow mouse drag to change the clip on the after
 
       $( $before ).mousemove(function( event ) {
-          var x = event.pageX - element.offsetLeft - ((1200 - this.naturalWidth) / 2)
-          var css = "rect( 0px, " + x + "px, " + this.naturalHeight + "px, 0px)"
+          var x = event.pageX - element.offsetLeft - ((1200 - $(this).width() ) / 2)
+          var css = "rect( 0px, " + x + "px, " + $(this).height() + "px, 0px)"
           $after.style.clip = css
       });
 

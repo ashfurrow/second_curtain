@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'second_curtain'
-  s.version     = '0.1.5'
+  s.version     = '0.2.0'
   s.licenses    = ['MIT']
   s.summary     = "Upload failing iOS snapshot tests cases to S3."
   s.description	=
@@ -19,7 +19,9 @@ Gem::Specification.new do |s|
     "lib/second_curtain/parser.rb",
     "lib/second_curtain/xcode_test_case.rb",
     "lib/second_curtain/test_suite.rb",
-    "lib/second_curtain/kaleidoscope_command.rb"
+    "lib/second_curtain/kaleidoscope_command.rb",
+    "lib/second_curtain/template.mustache.html",
+    "lib/second_curtain/web_preview.rb"
   ]
   s.require_paths = ["lib"]
   s.executables << 'second_curtain'
