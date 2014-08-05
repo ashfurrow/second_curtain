@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   Wouldn't it be awesome if we could upload the failing test snapshots somewhere, so we can see exactly what's wrong? That's what this project is going to do. Once it's finished.
   }
-  s.authors     = ["Ash Furrow"]
+  s.authors     = ["Ash Furrow", "Orta Therox"]
   s.homepage	= 'https://github.com/AshFurrow/second_curtain'
   s.email       = 'ash@ashfurrow.com'
   s.files       = [
