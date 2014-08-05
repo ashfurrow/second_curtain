@@ -141,7 +141,7 @@ source 'https://rubygems.org'
 
 gem 'cocoapods'
 gem 'xcpretty'
-gem 'second_curtain', '~> 0.1.4'
+gem 'second_curtain', '~> 0.2'
 ```
 
 And when any snapshot tests fail, they'll be uploaded to S3 and an HTML page will be generated with links to the images so you can download them. Huzzah!
