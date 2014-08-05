@@ -8,13 +8,6 @@ describe Upload do
     expect(upload.actual_path).to eq('actual')
   end
 
-  it "should return valid html from to_html" do
-    upload = Upload.new('expected', 'actual')
-    upload.uploaded_expected_url = URI("http://exmaple.com/1")
-    upload.uploaded_actual_url = URI("http://exmaple.com/2")
-    expect(upload.to_html).to eq("<li><a href='http://exmaple.com/1'>Expected</a>, <a href='http://exmaple.com/2'>Actual</li>")
-  end
-
   it "should upload properly" do
     path = "test/folder"
     expected_double = double()
