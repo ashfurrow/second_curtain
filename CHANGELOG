@@ -1,6 +1,7 @@
-## Next
+## 0.2.0
 
 - Using more intelligent parser to avoid uploading false matches. [@ashfurrow](http://github.com/AshFurrow)
+- Generating inline image preview HTML. [@orta](http://github.com/orta)
 
 ## 0.1.5
 
