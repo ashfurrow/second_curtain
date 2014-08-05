@@ -33,4 +33,20 @@ describe(@"a view controller", ^{
     });
 });
 
+describe(@"views", ^{
+    it(@"should be green", ^{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+        view.backgroundColor = [UIColor purpleColor];
+        expect(view).to.haveValidSnapshot();
+    });
+    
+    it(@"should be red", ^{
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 320)];
+        view.backgroundColor = [UIColor orangeColor];
+        expect(view).to.haveValidSnapshot();
+    });
+
+});
+
+
 SpecEnd

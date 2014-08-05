@@ -51,24 +51,10 @@ describe UploadManager do
 
     upload = double()
     expect(upload).to receive(:upload)
-    expect(upload).to receive(:to_html).and_return("HTML")
 
     upload_manager.instance_variable_set(:@uploads, [upload])
 
     result = upload_manager.upload("folder")
     expect(result).to eq("http://example.com")
-  end
-
-  it "properly generates html" do
-    bucket = double()
-    path_prefix = "test/"
-    upload_manager = UploadManager.new(bucket, path_prefix)
-
-    upload = double()
-    expect(upload).to receive(:to_html).and_return("HTML")
-
-    upload_manager.instance_variable_set(:@uploads, [upload])
-
-    expect(upload_manager.to_html).to eq("<html><body>HTML</body></html>")
   end
 end

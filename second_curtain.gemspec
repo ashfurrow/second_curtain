@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version     = '0.2.0'
   s.licenses    = ['MIT']
   s.summary     = "Upload failing iOS snapshot tests cases to S3."
-  s.description	= 
+  s.description	=
   %q{
   If you're using the cool FBSnapshotTestCase to test your iOS view logic, awesome! Even better if you have continuous integration, like on Travis, to automate running those tests!
 
@@ -19,9 +19,12 @@ Gem::Specification.new do |s|
     "lib/second_curtain/parser.rb",
     "lib/second_curtain/xcode_test_case.rb",
     "lib/second_curtain/test_suite.rb",
-    "lib/second_curtain/kaleidoscope_command.rb"
+    "lib/second_curtain/kaleidoscope_command.rb",
+    "lib/second_curtain/template.mustache.html",
+    "lib/second_curtain/web_preview.rb"
   ]
   s.require_paths = ["lib"]
   s.executables << 'second_curtain'
   s.add_runtime_dependency 'aws-sdk', '~> 1.48'
+  s.add_runtime_dependency 'mustache', '~> 0.99'
 end
