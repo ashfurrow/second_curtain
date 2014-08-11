@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Avoids possible crash when parsing [unexpected logs](https://github.com/AshFurrow/second_curtain/issues/19). [@ashfurrow](http://github.com/AshFurrow)
+
 ## 0.2.0
 
 - Using more intelligent parser to avoid uploading false matches. [@ashfurrow](http://github.com/AshFurrow)
