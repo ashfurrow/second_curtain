@@ -20,7 +20,10 @@ class Parser
         test_case = XcodeTestCase.test_case_from_line(line)
         latest_test_suite.test_cases.push test_case unless test_case == nil
       elsif line.include?("' failed (")
-        latest_test_suite.latest_test_case.latest_command.fails = true
+        command = latest_test_suite.latest_test_case.latest_command
+        if command != nil
+          command.fails = true
+        end
       end
     end
 
