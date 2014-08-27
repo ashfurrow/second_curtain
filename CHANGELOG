@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Changed gemspec syntax. [@ashfurrow](http://github.com/AshFurrow)
+
 ## 0.2.2
 
 - Updated `aws-sdk` gem to `aws-sdk-v1` gem as per their [README](https://github.com/aws/aws-sdk-ruby/blob/8b5eedff5f3f93e43e56c24c9712d063e09950b8/README.md#installation). [@ashfurrow](http://github.com/AshFurrow)

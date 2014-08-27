@@ -12,19 +12,9 @@ Gem::Specification.new do |s|
   s.authors     = ["Ash Furrow", "Orta Therox"]
   s.homepage	= 'https://github.com/AshFurrow/second_curtain'
   s.email       = 'ash@ashfurrow.com'
-  s.files       = [
-    "lib/second_curtain.rb",
-    "lib/second_curtain/upload_manager.rb",
-    "lib/second_curtain/upload.rb",
-    "lib/second_curtain/parser.rb",
-    "lib/second_curtain/xcode_test_case.rb",
-    "lib/second_curtain/test_suite.rb",
-    "lib/second_curtain/kaleidoscope_command.rb",
-    "lib/second_curtain/template.mustache.html",
-    "lib/second_curtain/web_preview.rb"
-  ]
+  s.files       = `git ls-files`.split($/)
   s.require_paths = ["lib"]
-  s.executables << 'second_curtain'
+  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.add_runtime_dependency 'aws-sdk-v1', '~> 1.52'
   s.add_runtime_dependency 'mustache', '~> 0.99'
 end
