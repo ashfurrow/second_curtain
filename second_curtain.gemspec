@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'second_curtain'
-  s.version     = '0.2.0'
+  s.version     = '0.2.2'
   s.licenses    = ['MIT']
   s.summary     = "Upload failing iOS snapshot tests cases to S3."
   s.description	=
@@ -25,6 +25,6 @@ Gem::Specification.new do |s|
   ]
   s.require_paths = ["lib"]
   s.executables << 'second_curtain'
-  s.add_runtime_dependency 'aws-sdk', '~> 1.48'
+  s.add_runtime_dependency 'aws-sdk-v1', '~> 1.52'
   s.add_runtime_dependency 'mustache', '~> 0.99'
 end
