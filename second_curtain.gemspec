@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'second_curtain'
-  s.version     = '0.2.2'
+  s.version     = '0.2.3'
   s.licenses    = ['MIT']
   s.summary     = "Upload failing iOS snapshot tests cases to S3."
   s.description	=
