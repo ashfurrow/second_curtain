@@ -1,4 +1,4 @@
-require 'aws-sdk'
+require 'aws-sdk-v1'
 require 'second_curtain/upload'
 require 'second_curtain/web_preview'
 

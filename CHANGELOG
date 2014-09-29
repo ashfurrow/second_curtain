@@ -1,3 +1,7 @@
+## 0.2.4
+
+- Fixes problem with missing `aws-sdk` gem. [@ashfurrow](http://github.com/AshFurrow)
+
 ## 0.2.3
 
 - Changed gemspec syntax. [@ashfurrow](http://github.com/AshFurrow)
