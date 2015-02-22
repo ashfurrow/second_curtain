@@ -1,7 +1,7 @@
 Second Curtain
 =============================
 
-[![Build Status](https://travis-ci.org/AshFurrow/second_curtain.svg?branch=master)](https://travis-ci.org/AshFurrow/second_curtain)
+[![Build Status](https://travis-ci.org/ashfurrow/second_curtain.svg?branch=master)](https://travis-ci.org/ashfurrow/second_curtain)
 
 If you're using the cool [FBSnapshotTestCase](https://github.com/facebook/ios-snapshot-test-case) to test your iOS view logic, awesome! Even better if you have continuous integration, like on [Travis](https://travis-ci.org), to automate running those tests!
 
