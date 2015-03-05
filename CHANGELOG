@@ -1,3 +1,8 @@
+## 0.3.0
+
+- Allows specification of AWS S3 bucket region. [@tiii](http://github.com/tiii)
+- Allows use of https buckets with protocol-independent jQuery URLs. [@tiii](http://github.com/tiii)
+
 ## 0.2.4
 
 - Fixes problem with missing `aws-sdk` gem. [@ashfurrow](http://github.com/AshFurrow)
