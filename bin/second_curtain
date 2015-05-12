@@ -27,10 +27,7 @@ if parser.has_failing_commands
     path_prefix += '/'
   end
 
-  folder_name = ENV['UPLOAD_IOS_SNAPSHOT_FOLDER_NAME']
-  if !folder_name
-    folder_name = ENV['TRAVIS_JOB_ID']
-  end
+  folder_name = ENV['UPLOAD_IOS_SNAPSHOT_FOLDER_NAME'] || ENV['TRAVIS_JOB_ID'] || ENV['CIRCLE_BUILD_NUM']
 
   if !folder_name
     now = DateTime.now()

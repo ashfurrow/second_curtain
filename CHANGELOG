@@ -1,3 +1,7 @@
+## 0.4.0
+
+- Uses CircleCI build number as prefix. [@alloy](https://github.com/alloy)
+
 ## 0.3.0
 
 - Allows specification of AWS S3 bucket region. [@tiii](http://github.com/tiii)
