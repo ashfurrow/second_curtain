@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Improved parsing – @orta
+
 ## 0.4.0
 
 - Uses CircleCI build number as prefix. [@alloy](https://github.com/alloy)
