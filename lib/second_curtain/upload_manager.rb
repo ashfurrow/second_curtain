@@ -1,4 +1,4 @@
-require 'aws-sdk-v1'
+require "s3"
 require 'second_curtain/upload'
 require 'second_curtain/web_preview'
 
@@ -24,8 +24,9 @@ class UploadManager
     end
 
     preview = WebPreview.new(@uploads)
-    index_object = @bucket.objects[@path_prefix + folder_name + "/index.html"]
-    index_object.write(preview.generate_html)
-    index_object.public_url.to_s
+    index_path = @path_prefix + folder_name + "/index.html"
+    index_object = @bucket.objects.build(index_path)
+    index_object.content = preview.generate_html
+    index_object.url
   end
 end

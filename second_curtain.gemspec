@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split($/)
   s.require_paths = ["lib"]
   s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  s.add_runtime_dependency 'aws-sdk-v1', '~> 1.52'
+  s.add_runtime_dependency 's3', '~> 0.3'
   s.add_runtime_dependency 'mustache', '~> 0.99'
 end

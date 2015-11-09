@@ -10,7 +10,7 @@ describe UploadManager do
     expect(upload_manager.instance_variable_get(:@uploads)).to eq([])
     expect(upload_manager.instance_variable_get(:@path_prefix)).to eq(path_prefix)
     expect(upload_manager.instance_variable_get(:@bucket)).to eq(bucket)
-  end 
+  end
 
   it "propertly enqueues new uploads" do
     bucket = double()
@@ -42,9 +42,7 @@ describe UploadManager do
     expect(double).to receive(:public_url).and_return("http://example.com")
 
     bucket = double()
-    expect(bucket).to receive(:objects).and_return({
-      "test/folder/index.html" => double
-    })
+    expect(bucket).to receive(:objects).and_return([])
 
     path_prefix = "test/"
     upload_manager = UploadManager.new(bucket, path_prefix)
