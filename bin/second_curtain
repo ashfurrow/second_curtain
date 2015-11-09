@@ -34,11 +34,12 @@ if parser.has_failing_commands
     folder_name = now.strftime('%Y-%m-%d--%H-%M')
   end
 
-  client_settings = {}
-  client_settings[:region] = ENV['AWS_REGION'] if ENV['AWS_REGION']
+  service = S3::Service.new(
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  )
 
-  s3 = AWS::S3.new client_settings
-  bucket = s3.buckets[bucket_name]
+  bucket = service.buckets.find bucket_name
   manager = UploadManager.new(bucket, path_prefix)
 
   parser.failing_commands.each do |command|
