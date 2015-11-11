@@ -1,6 +1,7 @@
 require 'aws-sdk-v1'
 require 'second_curtain/upload'
 require 'second_curtain/web_preview'
+require 'second_curtain/path_utils'
 
 class UploadManager
   def initialize (bucket, path_prefix)
@@ -24,7 +25,7 @@ class UploadManager
     end
 
     preview = WebPreview.new(@uploads)
-    index_object = @bucket.objects[@path_prefix + folder_name + "/index.html"]
+    index_object = @bucket.objects[PathUtils.pathWithComponents([@path_prefix, folder_name, "index.html"])]
     index_object.write(preview.generate_html)
     index_object.public_url.to_s
   end
