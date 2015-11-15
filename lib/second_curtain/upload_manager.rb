@@ -21,7 +21,7 @@ class UploadManager
     return nil unless @uploads.count > 0
 
     @uploads.each do |upload|
-      upload.upload(@bucket, @path_prefix)
+      upload.upload(@bucket, PathUtils.pathWithComponents([@path_prefix, folder_name]))
     end
 
     preview = WebPreview.new(@uploads)
