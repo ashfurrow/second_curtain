@@ -21,14 +21,12 @@ describe Upload do
     expect(bucket).to receive(:objects).twice.and_return(doubles)
 
     expect(expected_double).to receive(:write).with(anything)
-    expect(expected_double).to receive(:public_url).and_return("http://exmaple.com/1.png")
     expect(actual_double).to receive(:write).with(anything)
-    expect(actual_double).to receive(:public_url).and_return("http://exmaple.com/2.png")
 
     upload = Upload.new('/path/to/expected.png', '/path/to/actual.png')
     upload.upload(bucket, path)
 
-    expect(upload.uploaded_expected_url).to eq("http://exmaple.com/1.png")
-    expect(upload.uploaded_actual_url).to eq("http://exmaple.com/2.png")
+    expect(upload.uploaded_expected_url).to eq("expected.png")
+    expect(upload.uploaded_actual_url).to eq("actual.png")
   end
 end
