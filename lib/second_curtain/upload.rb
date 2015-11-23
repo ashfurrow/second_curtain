@@ -22,11 +22,11 @@ class Upload
     expected_filename = Pathname.new(@expected_path).basename.to_s
     expected_object = bucket.objects[PathUtils.pathWithComponents([path, expected_filename])]
     expected_object.write(:file => @expected_path)
-    @uploaded_expected_url = expected_object.public_url
+    @uploaded_expected_url = expected_filename
 
     actual_filename = Pathname.new(@actual_path).basename.to_s
     actual_object = bucket.objects[PathUtils.pathWithComponents([path, actual_filename])]
     actual_object.write(:file => @actual_path)
-    @uploaded_actual_url = actual_object.public_url
+    @uploaded_actual_url = actual_filename
   end
 end
